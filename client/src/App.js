@@ -13,6 +13,8 @@ import Hillary from "./components/Hillary";
 import GlobalStyles from "./GlobalStyles";
 import { FaTwitter } from "react-icons/fa";
 
+require("dotenv").config();
+
 function App() {
   return (
     <>

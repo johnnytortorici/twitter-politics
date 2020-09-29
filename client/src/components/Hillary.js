@@ -7,6 +7,8 @@ import { requestHillaryTweets, receiveHillaryTweets } from "../actions";
 import Tweet from "./Tweet";
 import Loading from "./Loading";
 
+const SERVER_URI = process.env.REACT_APP_SERVER_URI;
+
 const Hillary = () => {
   const status = useSelector((state) => state.status);
   const tweets = useSelector((state) => state.tweets);
@@ -15,7 +17,7 @@ const Hillary = () => {
   useEffect(() => {
     dispatch(requestHillaryTweets());
 
-    fetch("/hillary", {
+    fetch(`${SERVER_URI}/hillary`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

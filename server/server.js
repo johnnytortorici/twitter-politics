@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const app = express();
 const bodyParser = require("body-parser");
 const fetch = require("isomorphic-fetch");
@@ -11,6 +12,7 @@ const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => console.log(`App listening on port ${PORT}`));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cors());
 
 app.get("/trump", (req, res) => {
   fetch("https://api.twitter.com/2/tweets/search/recent?query=from:25073877", {
