@@ -3,10 +3,38 @@ const app = express();
 const bodyParser = require("body-parser");
 const fetch = require("isomorphic-fetch");
 
+require("dotenv").config();
+const { BEARER_TOKEN } = process.env;
+
 const PORT = 8000;
-const token =
-  "AAAAAAAAAAAAAAAAAAAAAIqSIAEAAAAASDyWL8SSoYrb3DVIF9Z9d%2Ff7nvU%3DVQuZWabxo5GFGCaUtuLHYxRLn7SwtoNW4ANckFEgQBtLS3Jzvv";
 
 app.listen(PORT, () => console.log(`App listening on port ${PORT}`));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+app.get("/trump", (req, res) => {
+  fetch("https://api.twitter.com/2/tweets/search/recent?query=from:25073877", {
+    method: "GET",
+    headers: {
+      authorization: `Bearer ${BEARER_TOKEN}`,
+    },
+  })
+    .then((data) => data.json())
+    .then((json) => res.status(200).json({ status: "success", data: json }))
+    .catch((err) => res.status(400).json({ status: "error", message: err }));
+});
+
+app.get("/hillary", (req, res) => {
+  fetch(
+    "https://api.twitter.com/2/tweets/search/recent?query=from:1339835893",
+    {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${BEARER_TOKEN}`,
+      },
+    }
+  )
+    .then((data) => data.json())
+    .then((json) => res.status(200).json({ status: "success", data: json }))
+    .catch((err) => res.status(400).json({ status: "error", message: err }));
+});
