@@ -6,7 +6,7 @@ const fetch = require("isomorphic-fetch");
 require("dotenv").config();
 const { BEARER_TOKEN } = process.env;
 
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 
 app.listen(PORT, () => console.log(`App listening on port ${PORT}`));
 app.use(bodyParser.urlencoded({ extended: false }));
