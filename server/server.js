@@ -20,7 +20,9 @@ app.get("/trump", (req, res) => {
     },
   })
     .then((data) => data.json())
-    .then((json) => res.status(200).json({ status: "success", data: json }))
+    .then((json) =>
+      res.status(200).json({ status: "success", data: json.data })
+    )
     .catch((err) => res.status(400).json({ status: "error", message: err }));
 });
 
@@ -35,6 +37,8 @@ app.get("/hillary", (req, res) => {
     }
   )
     .then((data) => data.json())
-    .then((json) => res.status(200).json({ status: "success", data: json }))
+    .then((json) =>
+      res.status(200).json({ status: "success", data: json.data })
+    )
     .catch((err) => res.status(400).json({ status: "error", message: err }));
 });
