@@ -40,7 +40,7 @@ const Hillary = () => {
           for our democracy.
         </Bio>
       </Header>
-      <h2>Hillary's Latest Tweets</h2>
+      <h3>Hillary's Latest Tweets</h3>
       {status !== "idle" ? (
         <Loading />
       ) : (
