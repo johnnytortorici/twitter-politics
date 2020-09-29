@@ -67,6 +67,7 @@ const Wrapper = styled.div`
   border: 1px solid #d3d3d3;
   border-radius: 5px;
   box-shadow: 0 0 5px #d3d3d3;
+  background-color: #fff;
 
   &:hover {
     box-shadow: 0 0 10px #d3d3d3;
